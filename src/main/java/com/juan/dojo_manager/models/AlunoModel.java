@@ -31,6 +31,7 @@ public class AlunoModel {
     private String celular;
     private String email;
     private String observacao;
+    private String complemento;
     private String endereco;
     private String numero;
     private String bairro;

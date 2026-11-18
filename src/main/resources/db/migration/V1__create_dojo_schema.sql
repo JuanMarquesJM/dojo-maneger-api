@@ -7,6 +7,7 @@ CREATE TABLE alunos(
     celular VARCHAR(30),
     email VARCHAR(150),
     observacao TEXT,
+    complemento VARCHAR(150),
     endereco VARCHAR(150),
     numero VARCHAR(20),
     bairro VARCHAR(100),
