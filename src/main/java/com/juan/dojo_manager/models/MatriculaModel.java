@@ -24,7 +24,7 @@ public class MatriculaModel {
     @Column(name = "data_matricula")
     private LocalDate dataMatricula;
 
-    @Column(name = "data_vencimento")
+    @Column(name = "dia_vencimento")
     private Integer diaVencimento;
 
     @Column(name = "data_encerramento")

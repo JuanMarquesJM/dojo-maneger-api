@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +20,8 @@ public class AlunoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String nome;
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -30,7 +33,6 @@ public class AlunoModel {
     private String observacao;
     private String endereco;
     private String numero;
-    private String complemento;
     private String bairro;
     private String cidade;
 
@@ -39,19 +41,19 @@ public class AlunoModel {
     private String cep;
 
     @Column(name = "criado_em")
-    private LocalDate criadoEm;
+    private LocalDateTime criadoEm;
 
     @Column(name = "atualizado_em")
-    private LocalDate atualizadoEm;
+    private LocalDateTime atualizadoEm;
 
     @PrePersist
     public void prePersist() {
-        criadoEm = LocalDate.now();
+        criadoEm = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() {
-        atualizadoEm = LocalDate.now();
+        atualizadoEm = LocalDateTime.now();
     }
 
 }

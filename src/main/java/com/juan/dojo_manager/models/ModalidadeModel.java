@@ -18,9 +18,8 @@ public class ModalidadeModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String nome;
 
-    private  String nome;
-
-    private Boolean ativo = true;
+    private Boolean ativa = true;
 
 }

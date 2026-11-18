@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,10 +21,10 @@ public class AssiduidadeModel {
     private Long id;
 
     @Column(name = "data_entrada")
-    private LocalDate dataEntrada;
+    private LocalDateTime dataEntrada;
 
     @Column(name = "data_saida")
-    private LocalDate dataSaida;
+    private LocalDateTime dataSaida;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matricula_id")
@@ -33,7 +33,7 @@ public class AssiduidadeModel {
     @PrePersist
     public void prePersistir() {
         if (dataEntrada == null) {
-            dataEntrada = LocalDate.now();
+            dataEntrada = LocalDateTime.now();
         }
     }
 }
