@@ -51,6 +51,7 @@ CREATE TABLE matriculas(
 );
 
 CREATE TABLE matriculas_modalidades(
+    id BIGSERIAL PRIMARY KEY,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
     modalidade_id BIGINT NOT NULL REFERENCES modalidades(id),
     graduacao_id BIGINT NOT NULL REFERENCES graduacoes(id),
