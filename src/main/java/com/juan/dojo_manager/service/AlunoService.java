@@ -2,6 +2,7 @@ package com.juan.dojo_manager.service;
 
 import com.juan.dojo_manager.dto.AlunoRequest;
 import com.juan.dojo_manager.dto.AlunoResponse;
+import com.juan.dojo_manager.exception.RegraNegocioExceprion;
 import com.juan.dojo_manager.models.AlunoModel;
 import com.juan.dojo_manager.repository.AlunoRepository;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class AlunoService {
 
     public AlunoResponse cadastrarAluno(AlunoRequest alunoRequest) {
         if (alunoRequest.email() != null && alunoRepository.existsByEmail(alunoRequest.email())){
-            throw  new RuntimeException(("Email já cadastrado"));
+            throw  new RegraNegocioExceprion(("Email já cadastrado"));
 
         }
 
@@ -48,7 +49,7 @@ public class AlunoService {
     }
 
     private AlunoModel buscarAlunoModelPorId(Long id) {
-        return alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+        return alunoRepository.findById(id).orElseThrow(() -> new RegraNegocioExceprion("Aluno não encontrado"));
     }
 }
 
