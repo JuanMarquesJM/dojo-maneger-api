@@ -3,6 +3,7 @@ package com.juan.dojo_manager.controller;
 import com.juan.dojo_manager.dto.AlunoRequest;
 import com.juan.dojo_manager.dto.AlunoResponse;
 import com.juan.dojo_manager.service.AlunoService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public class AlunoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlunoResponse cadastrarAluno(@RequestBody AlunoRequest alunoRequest) {
+    public AlunoResponse cadastrarAluno(@RequestBody @Valid AlunoRequest alunoRequest) {
         return alunoService.cadastrarAluno(alunoRequest);
     }
 
@@ -34,7 +35,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public AlunoResponse atualizarAluno(@PathVariable Long id, @RequestBody AlunoRequest alunoRequest) {
+    public AlunoResponse atualizarAluno(@PathVariable Long id, @RequestBody @Valid AlunoRequest alunoRequest) {
         return alunoService.atualizarAluno(id, alunoRequest);
     }
 
