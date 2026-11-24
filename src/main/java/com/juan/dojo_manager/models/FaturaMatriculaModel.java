@@ -1,6 +1,6 @@
 package com.juan.dojo_manager.models;
 
-import com.juan.dojo_manager.models.Enums.StatusFatura;
+import com.juan.dojo_manager.models.enums.StatusFatura;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

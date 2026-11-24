@@ -1,9 +1,12 @@
 package com.juan.dojo_manager.service;
 
+import com.juan.dojo_manager.dto.AlunoFiltroRequest;
 import com.juan.dojo_manager.dto.AlunoRequest;
 import com.juan.dojo_manager.dto.AlunoResponse;
+import com.juan.dojo_manager.exception.RegraNegocioExceprion;
 import com.juan.dojo_manager.models.AlunoModel;
 import com.juan.dojo_manager.repository.AlunoRepository;
+import com.juan.dojo_manager.specification.AlunoSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +20,7 @@ public class AlunoService {
 
     public AlunoResponse cadastrarAluno(AlunoRequest alunoRequest) {
         if (alunoRequest.email() != null && alunoRepository.existsByEmail(alunoRequest.email())){
-            throw  new RuntimeException(("Email já cadastrado"));
+            throw  new RegraNegocioExceprion(("Email já cadastrado"));
 
         }
 
@@ -26,8 +29,9 @@ public class AlunoService {
         return AlunoResponse.fromModel(alunoSalvo);
     }
 
-    public Page<AlunoResponse> listarAlunos(Pageable pageable) {
-        return alunoRepository.findAll(pageable).map(AlunoResponse::fromModel);
+    public Page<AlunoResponse> listarAlunos(AlunoFiltroRequest filtro, Pageable pageable) {
+        return alunoRepository.findAll(AlunoSpecification.comFiltro(filtro),
+                pageable).map(AlunoResponse::fromModel);
     }
 
     public AlunoResponse buscarAlunoPorId(Long id) {
@@ -48,7 +52,7 @@ public class AlunoService {
     }
 
     private AlunoModel buscarAlunoModelPorId(Long id) {
-        return alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+        return alunoRepository.findById(id).orElseThrow(() -> new RegraNegocioExceprion("Aluno não encontrado"));
     }
 }
 

@@ -1,4 +1,4 @@
-package com.juan.dojo_manager.models.Enums;
+package com.juan.dojo_manager.models.enums;
 
 public enum StatusFatura {
     ABERTA,
