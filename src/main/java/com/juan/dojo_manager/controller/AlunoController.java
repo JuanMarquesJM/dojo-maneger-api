@@ -1,5 +1,6 @@
 package com.juan.dojo_manager.controller;
 
+import com.juan.dojo_manager.dto.AlunoFiltroRequest;
 import com.juan.dojo_manager.dto.AlunoRequest;
 import com.juan.dojo_manager.dto.AlunoResponse;
 import com.juan.dojo_manager.service.AlunoService;
@@ -25,8 +26,8 @@ public class AlunoController {
     }
 
     @GetMapping
-    public Page<AlunoResponse> listarAlunos(Pageable pageable) {
-        return alunoService.listarAlunos(pageable);
+    public Page<AlunoResponse> listarAlunos(AlunoFiltroRequest filtro, Pageable pageable) {
+        return alunoService.listarAlunos(filtro, pageable);
     }
 
     @GetMapping("/{id}")
